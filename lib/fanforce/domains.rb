@@ -1,33 +1,33 @@
 module Fanforce
 
   if ENV['RACK_ENV'] == 'development'
-    TOP_LEVEL_DOMAIN  = ENV['FANFORCE_GEM_TOP_LEVEL_DOMAIN'] || 'gg'
-    BASE_DOMAIN       = ENV['FANFORCE_GEM_BASE_DOMAIN'] || 'fanforce.' + TOP_LEVEL_DOMAIN
-    SMARTURL_DOMAIN   = 'fanforc.gg'
-    FF_APP_DOMAIN     = 'ffapp.gg'
-    FF_PLUGIN_DOMAIN  = 'ffplugin.gg'
-    FF_WIDGET_DOMAIN  = 'ffwidget.gg'
+    TOP_LEVEL_DOMAIN        = ENV['FANFORCE_GEM_TOP_LEVEL_DOMAIN'] || 'gg'
+    BASE_DOMAIN             = ENV['FANFORCE_GEM_BASE_DOMAIN'] || 'fanforce.' + TOP_LEVEL_DOMAIN
+    DEFAULT_SMARTURL_DOMAIN = 'fanforc.gg'
+    APPS_BASE_DOMAIN        = 'ffapp.gg'
+    PLUGINS_BASE_DOMAIN     = 'ffplugin.gg'
+    WIDGETS_BASE_DOMAIN     = 'ffwidget.gg'
 
   elsif ENV['RACK_ENV'] == 'test'
-    BASE_DOMAIN       = 'fanforce.gg'
-    SMARTURL_DOMAIN   = 'fanforc.gg'
-    FF_APP_DOMAIN     = 'ffapp.gg'
-    FF_PLUGIN_DOMAIN  = 'ffplugin.gg'
-    FF_WIDGET_DOMAIN  = 'ffwidget.gg'
+    BASE_DOMAIN             = 'fanforce.gg'
+    DEFAULT_SMARTURL_DOMAIN = 'fanforc.gg'
+    APPS_BASE_DOMAIN        = 'ffapp.gg'
+    PLUGINS_BASE_DOMAIN     = 'ffplugin.gg'
+    WIDGETS_BASE_DOMAIN     = 'ffwidget.gg'
 
   elsif ENV['RACK_ENV'] == 'staging'
-    BASE_DOMAIN       = 'fanforce-staging.com'
-    SMARTURL_DOMAIN   = 'fanforc.us'
-    FF_APP_DOMAIN     = 'ffapp.us'
-    FF_PLUGIN_DOMAIN  = 'ffplugin.us'
-    FF_WIDGET_DOMAIN  = 'ffwidget.us'
+    BASE_DOMAIN             = 'fanforce-staging.com'
+    DEFAULT_SMARTURL_DOMAIN = 'fanforc.us'
+    APPS_BASE_DOMAIN        = 'ffapp.us'
+    PLUGINS_BASE_DOMAIN     = 'ffplugin.us'
+    WIDGETS_BASE_DOMAIN     = 'ffwidget.us'
 
   else
-    BASE_DOMAIN       = 'fanforce.com'
-    SMARTURL_DOMAIN   = 'fanforce.io'
-    FF_APP_DOMAIN     = 'ffapp.io'
-    FF_PLUGIN_DOMAIN  = 'ffplugin.io'
-    FF_WIDGET_DOMAIN  = 'ffwidget.io'
+    BASE_DOMAIN             = 'fanforce.com'
+    DEFAULT_SMARTURL_DOMAIN = 'fanforce.io'
+    APPS_BASE_DOMAIN        = 'ffapp.io'
+    PLUGINS_BASE_DOMAIN     = 'ffplugin.io'
+    WIDGETS_BASE_DOMAIN     = 'ffwidget.io'
   end
 
   API_DOMAIN           = 'api.' + BASE_DOMAIN
