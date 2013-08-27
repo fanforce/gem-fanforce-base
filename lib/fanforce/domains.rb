@@ -1,4 +1,4 @@
-module Fanforce
+class Fanforce
 
   if ENV['RACK_ENV'] == 'development'
     TOP_LEVEL_DOMAIN        = ENV['FANFORCE_GEM_TOP_LEVEL_DOMAIN'] || 'gg'
