@@ -1,2 +1,2 @@
-require_relative 'fanforce/domains'
+require_relative 'fanforce/_base'
 require_relative 'fanforce/version'
