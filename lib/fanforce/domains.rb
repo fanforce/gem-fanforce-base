@@ -1,12 +1,13 @@
 module Fanforce::Domains
 
   def self.development
+    base_domain = (ENV['FANFORCE_GEM_TOP_LEVEL_DOMAIN'] || 'gg')
     {
-        :base             => ENV['FANFORCE_GEM_BASE_DOMAIN'] || 'fanforce.' + (ENV['FANFORCE_GEM_TOP_LEVEL_DOMAIN'] || 'gg'),
-        :default_smarturl => 'fanforc.gg',
-        :apps_base        => 'ffapp.gg',
-        :plugins_base     => 'ffplugin.gg',
-        :widgets_base     => 'ffwidget.gg'
+        :base             => ENV['FANFORCE_GEM_BASE_DOMAIN'] || "fanforce.#{base_domain}",
+        :default_smarturl => "fanforc.#{base_domain}",
+        :apps_base        => "ffapp.#{base_domain}",
+        :plugins_base     => "ffplugin.#{base_domain}",
+        :widgets_base     => "ffwidget.#{base_domain}"
     }
   end
 
