@@ -1,12 +1,11 @@
 class Fanforce
 
-  if ENV['RACK_ENV'] == 'development'
-    TOP_LEVEL_DOMAIN        = ENV['FANFORCE_GEM_TOP_LEVEL_DOMAIN'] || 'gg'
-    BASE_DOMAIN             = ENV['FANFORCE_GEM_BASE_DOMAIN'] || 'fanforce.' + TOP_LEVEL_DOMAIN
-    DEFAULT_SMARTURL_DOMAIN = 'fanforc.gg'
-    APPS_BASE_DOMAIN        = 'ffapp.gg'
-    PLUGINS_BASE_DOMAIN     = 'ffplugin.gg'
-    WIDGETS_BASE_DOMAIN     = 'ffwidget.gg'
+  if ENV['RACK_ENV'] == 'production'
+    BASE_DOMAIN             = 'fanforce.com'
+    DEFAULT_SMARTURL_DOMAIN = 'fanforce.io'
+    APPS_BASE_DOMAIN        = 'ffapp.io'
+    PLUGINS_BASE_DOMAIN     = 'ffplugin.io'
+    WIDGETS_BASE_DOMAIN     = 'ffwidget.io'
 
   elsif ENV['RACK_ENV'] == 'test'
     BASE_DOMAIN             = 'fanforce.gg'
@@ -23,11 +22,13 @@ class Fanforce
     WIDGETS_BASE_DOMAIN     = 'ffwidget.us'
 
   else
-    BASE_DOMAIN             = 'fanforce.com'
-    DEFAULT_SMARTURL_DOMAIN = 'fanforce.io'
-    APPS_BASE_DOMAIN        = 'ffapp.io'
-    PLUGINS_BASE_DOMAIN     = 'ffplugin.io'
-    WIDGETS_BASE_DOMAIN     = 'ffwidget.io'
+    TOP_LEVEL_DOMAIN        = ENV['FANFORCE_GEM_TOP_LEVEL_DOMAIN'] || 'gg'
+    BASE_DOMAIN             = ENV['FANFORCE_GEM_BASE_DOMAIN'] || 'fanforce.' + TOP_LEVEL_DOMAIN
+    DEFAULT_SMARTURL_DOMAIN = 'fanforc.gg'
+    APPS_BASE_DOMAIN        = 'ffapp.gg'
+    PLUGINS_BASE_DOMAIN     = 'ffplugin.gg'
+    WIDGETS_BASE_DOMAIN     = 'ffwidget.gg'
+
   end
 
   API_DOMAIN           = 'api.' + BASE_DOMAIN
