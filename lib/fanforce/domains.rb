@@ -1,6 +1,7 @@
 module Fanforce::Domains
 
   def self.development
+    puts "top-level-domain: #{ENV['FANFORCE_GEM_TOP_LEVEL_DOMAIN']}"
     {
         :base             => 'fanforce.gg',
         :default_smarturl => ENV['FANFORCE_GEM_BASE_DOMAIN'] || 'fanforce.' + (ENV['FANFORCE_GEM_TOP_LEVEL_DOMAIN'] || 'gg'),
