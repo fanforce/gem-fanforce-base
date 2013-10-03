@@ -5,8 +5,8 @@ class Fanforce
     Fanforce::Domains.method(ENV['RACK_ENV'] || 'development').call[:base]
   end
 
-  def self.default_smarturl_domain
-    Fanforce::Domains.method(ENV['RACK_ENV'] || 'development').call[:default_smarturl]
+  def self.default_short_domain
+    Fanforce::Domains.method(ENV['RACK_ENV'] || 'development').call[:default_short_domain]
   end
 
   def self.apps_base_domain

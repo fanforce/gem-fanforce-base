@@ -6,7 +6,7 @@ require 'fanforce/version'
 Gem::Specification.new do |gem|
   gem.name        = 'fanforce'
   gem.version     = Fanforce::VERSION
-  gem.date        = '2013-08-27'
+  gem.date        = Time.now.utc.strftime('%Y-%m-%d')
   gem.summary     = %q{Core Fanforce gem}
   gem.description = %q{Core gem used internally by other Fanforce gems}
   gem.authors     = ['Caleb Clark']
