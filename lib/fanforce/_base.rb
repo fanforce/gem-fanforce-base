@@ -25,7 +25,7 @@ class Fanforce
     'api.' + base_domain
   end
 
-  def self.i_domain
+  def self.eye_domain
     'i.' + base_domain
   end
 
