@@ -1,5 +1,8 @@
+require_relative 'domains'
+require_relative 'utils'
+
 class Fanforce
-  require_relative 'domains'
+  include Fanforce::Utils
 
   def self.base_domain
     Fanforce::Domains.method(ENV['RACK_ENV'] || 'development').call[:base]
