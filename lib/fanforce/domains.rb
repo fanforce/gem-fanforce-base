@@ -1,7 +1,7 @@
 require_relative 'domain_environments'
 
 module Fanforce::Domains
-  extend Fanforce::Utils
+  extend Fanforce::Domains
   def self.included(base) base.extend(self)  end
 
   def base_domain
