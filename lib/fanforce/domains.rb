@@ -1,44 +1,67 @@
-module Fanforce::Domains
+require_relative 'domain_environments'
 
-  def self.development
-    base_domain = (ENV['FANFORCE_GEM_TOP_LEVEL_DOMAIN'] || 'gg')
-    {
-        :base                 => ENV['FANFORCE_GEM_BASE_DOMAIN'] || "fanforce.#{base_domain}",
-        :default_short_domain => ENV['FANFORCE_GEM_DEFAULT_SHORT_DOMAIN'] || "fanforc.#{base_domain}",
-        :apps_base            => ENV['FANFORCE_GEM_APPS_BASE_DOMAIN']     || "ffapp.#{base_domain}",
-        :plugins_base         => ENV['FANFORCE_GEM_PLUGINS_BASE_DOMAIN']  || "ffplugin.#{base_domain}",
-        :widgets_base         => ENV['FANFORCE_GEM_WIDGETS_BASE_DOMAIN']  || "ffwidget.#{base_domain}"
-    }
+class Fanforce::Domains
+
+  def self.base_domain
+    Fanforce::DomainEnvironments.method(ENV['RACK_ENV'] || 'development').call[:base]
   end
 
-  def self.test
-    {
-      :base                 => 'fanforce.gg',
-      :default_short_domain => 'fanforc.gg',
-      :apps_base            => 'ffapp.gg',
-      :plugins_base         => 'ffplugin.gg',
-      :widgets_base         => 'ffwidget.gg'
-    }
+  def self.default_short_domain
+    Fanforce::DomainEnvironments.method(ENV['RACK_ENV'] || 'development').call[:default_short_domain]
   end
 
-  def self.staging
-    {
-        :base                 => 'fanforce-staging.com',
-        :default_short_domain => 'fanforc.us',
-        :apps_base            => 'ffapp.us',
-        :plugins_base         => 'ffplugin.us',
-        :widgets_base         => 'ffwidget.us'
-    }
+  def self.apps_base_domain
+    Fanforce::DomainEnvironments.method(ENV['RACK_ENV'] || 'development').call[:apps_base]
   end
 
-  def self.production
-    {
-        :base                 => 'fanforce.com',
-        :default_short_domain => 'fanforce.io',
-        :apps_base            => 'ffapp.io',
-        :plugins_base         => 'ffplugin.io',
-        :widgets_base         => 'ffwidget.io'
-    }
+  def self.plugins_base_domain
+    Fanforce::DomainEnvironments.method(ENV['RACK_ENV'] || 'development').call[:plugins_base]
+  end
+
+  def self.widgets_base_domain
+    Fanforce::DomainEnvironments.method(ENV['RACK_ENV'] || 'development').call[:widgets_base]
+  end
+
+  def self.api_domain
+    'api.' + base_domain
+  end
+
+  def self.eye_domain
+    'i.' + base_domain
+  end
+
+  def self.assets_domain
+    'assets.' + base_domain
+  end
+
+  def self.controller_domain
+    'controller.' + base_domain
+  end
+
+  def self.addon_management_url
+    controller_domain + '/db'
+  end
+
+  def self.website_domain
+    'www.' + base_domain
+  end
+
+  def self.developers_domain
+    'developers.' + base_domain
+  end
+
+  # these should be moved to edition
+
+  def self.app_domain
+    'app.' + base_domain
+  end
+
+  def self.signup_domain
+    'signup.' + base_domain
+  end
+
+  def self.marketplace_domain
+    'marketplace.' + base_domain
   end
 
 end
