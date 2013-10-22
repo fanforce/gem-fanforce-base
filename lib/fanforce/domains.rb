@@ -4,28 +4,45 @@ module Fanforce::Domains
   extend Fanforce::Domains
   def self.included(base) base.extend(self)  end
 
+  def environment
+    ENV['RACK_ENV'] || 'development'
+  end
+
+  def environ
+    case environment
+    when 'production'  then :Prd
+    when 'staging'     then :Stg
+    when 'test'        then :Test
+    when 'development' then :Dev
+  end
+end
+
   def base_domain
-    Fanforce::DomainEnvironments.method(ENV['RACK_ENV'] || 'development').call[:base]
+    Fanforce::DomainEnvironments.method(environment).call[:base]
   end
 
   def default_short_domain
-    Fanforce::DomainEnvironments.method(ENV['RACK_ENV'] || 'development').call[:default_short_domain]
+    Fanforce::DomainEnvironments.method(environment).call[:default_short_domain]
   end
 
   def apps_base_domain
-    Fanforce::DomainEnvironments.method(ENV['RACK_ENV'] || 'development').call[:apps_base]
+    Fanforce::DomainEnvironments.method(environment).call[:apps_base]
   end
 
   def plugins_base_domain
-    Fanforce::DomainEnvironments.method(ENV['RACK_ENV'] || 'development').call[:plugins_base]
+    Fanforce::DomainEnvironments.method(environment).call[:plugins_base]
   end
 
   def widgets_base_domain
-    Fanforce::DomainEnvironments.method(ENV['RACK_ENV'] || 'development').call[:widgets_base]
+    Fanforce::DomainEnvironments.method(environment).call[:widgets_base]
   end
 
   def api_domain
     'api.' + base_domain
+  end
+
+  def api_domain_ssl
+    environment == 'development' ? api_domain : "#{environ.to_s.downcase}-supercore-api.herokuapp.com"
   end
 
   def eye_domain
@@ -34,6 +51,10 @@ module Fanforce::Domains
 
   def assets_domain
     'assets.' + base_domain
+  end
+
+  def assets_domain_ssl
+    environment == 'development' ? assets_domain : "#{environ.to_s.downcase}-supercore-assets.herokuapp.com"
   end
 
   def controller_domain
