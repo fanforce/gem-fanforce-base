@@ -18,6 +18,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
 
   gem.add_runtime_dependency 'rack'
-  gem.add_runtime_dependency 'oj',         '~> 2.1.4'
   gem.add_runtime_dependency 'multi_json', '>= 1.7.2'
 end
