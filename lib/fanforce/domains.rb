@@ -61,6 +61,10 @@ end
     'controller.' + base_domain
   end
 
+  def uranium_domain
+    'uranium.' + base_domain
+  end
+
   def addon_management_url
     controller_domain + '/db'
   end
