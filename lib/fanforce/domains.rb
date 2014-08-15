@@ -2,7 +2,7 @@ require_relative 'domain_environments'
 
 module Fanforce::Domains
   extend Fanforce::Domains
-  def self.included(base) base.extend(self)  end
+  def self.included(base) base.extend(self) end
 
   def environment
     ENV['RACK_ENV'] || 'development'
@@ -10,12 +10,12 @@ module Fanforce::Domains
 
   def environ
     case environment
-    when 'production'  then :Prd
-    when 'staging'     then :Stg
-    when 'test'        then :Test
-    when 'development' then :Dev
+      when 'production'  then :Prd
+      when 'staging'     then :Stg
+      when 'test'        then :Test
+      when 'development' then :Dev
+    end
   end
-end
 
   def base_domain
     Fanforce::DomainEnvironments.method(environment).call[:base]
@@ -29,12 +29,8 @@ end
     Fanforce::DomainEnvironments.method(environment).call[:apps_base]
   end
 
-  def plugins_base_domain
-    Fanforce::DomainEnvironments.method(environment).call[:plugins_base]
-  end
-
-  def widgets_base_domain
-    Fanforce::DomainEnvironments.method(environment).call[:widgets_base]
+  def components_base_domain
+    Fanforce::DomainEnvironments.method(environment).call[:components_base]
   end
 
   def api_domain
@@ -63,10 +59,6 @@ end
 
   def uranium_domain
     'uranium.' + base_domain
-  end
-
-  def addon_management_url
-    controller_domain + '/db'
   end
 
   def website_domain
