@@ -1,11 +1,11 @@
 module Fanforce::DomainEnvironments
 
   def self.development
-    base_domain = (ENV['FANFORCE_GEM_TOP_LEVEL_DOMAIN'] || 'gg')
+    root_domain = (ENV['FANFORCE_GEM_TOP_LEVEL_DOMAIN'] || 'gg')
     {
-        :base                 => ENV['FANFORCE_GEM_BASE_DOMAIN'] || "fanforce.#{base_domain}",
-        :default_short_domain => ENV['FANFORCE_GEM_DEFAULT_SHORT_DOMAIN'] || "fanforc.#{base_domain}",
-        :apps_base            => ENV['FANFORCE_GEM_APPS_BASE_DOMAIN']     || "ffapp.#{base_domain}",
+        :base                 => ENV['FANFORCE_GEM_BASE_DOMAIN'] || "fanforce.#{root_domain}",
+        :default_short_domain => ENV['FANFORCE_GEM_DEFAULT_SHORT_DOMAIN'] || "fanforc.#{root_domain}",
+        :apps_base            => ENV['FANFORCE_GEM_APPS_BASE_DOMAIN']     || "ffapp.#{root_domain}",
     }
   end
 

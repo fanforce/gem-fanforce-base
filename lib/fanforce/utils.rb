@@ -71,24 +71,6 @@ module Fanforce::Utils
     MultiJson.load(str, :symbolize_keys => symbolize_keys)
   end
 
-  # Creates a string representation of a javascript object for $.tmpl
-  def compile_jquery_tmpls(options={}, &block)
-    begin require 'haml' rescue LoadError raise 'You must have the haml gem installed to use Fanforce.compile_jquery_templates.' end
-    context = Object.new
-    class << context
-      include Haml::Helpers
-    end
-    context.init_haml_helpers
-
-    format = options[:format] == 'html' ? :html : :json
-
-    return context.capture_haml(&block) if format == :html
-    single_line_html = context.capture_haml(&block).split(/\r?\n/).inject('') {|sl, l| sl += l.strip + ' ' }
-    matches = single_line_html.scan(/<script id=[\"'](.*?)[\"'](?:.*?)>(.*?)(?:<\/script>)/mi)
-
-    matches.inject({}) {|t,m| t[m[0]] = m[1]; t }.to_json
-  end
-
 end
 
 module Fanforce::InternalUtils

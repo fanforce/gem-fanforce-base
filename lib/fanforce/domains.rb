@@ -45,14 +45,6 @@ module Fanforce::Domains
     'i.' + base_domain
   end
 
-  def assets_domain
-    'assets.' + base_domain
-  end
-
-  def assets_domain_ssl
-    environment == 'development' ? assets_domain : "#{environ.to_s.downcase}-supercore-assets.herokuapp.com"
-  end
-
   def controller_domain
     'controller.' + base_domain
   end
@@ -77,10 +69,6 @@ module Fanforce::Domains
 
   def signup_domain
     'signup.' + base_domain
-  end
-
-  def marketplace_domain
-    'marketplace.' + base_domain
   end
 
 end
