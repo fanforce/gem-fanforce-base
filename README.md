@@ -1,4 +1,4 @@
-fanforce
+fanforce-base
 ========
 
-foundational gem used internally by other fanforce gems
+The base gem used by all other Fanforce gems

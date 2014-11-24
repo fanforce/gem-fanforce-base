@@ -1,5 +1,7 @@
-module Fanforce::DomainEnvironments
+module Fanforce::Base::DomainEnvironments
 
+  # Base domains for development environment.
+  # @return [hash]
   def self.development
     root_domain = (ENV['FANFORCE_GEM_TOP_LEVEL_DOMAIN'] || 'gg')
     {
@@ -9,6 +11,8 @@ module Fanforce::DomainEnvironments
     }
   end
 
+  # Base domains for test environment.
+  # @return [hash]
   def self.test
     {
       :base                 => 'fanforce.gg',
@@ -17,6 +21,8 @@ module Fanforce::DomainEnvironments
     }
   end
 
+  # Base domains for staging environment.
+  # @return [hash]
   def self.staging
     {
         :base                 => 'fanforce-staging.com',
@@ -25,6 +31,8 @@ module Fanforce::DomainEnvironments
     }
   end
 
+  # Base domains for production environment.
+  # @return [hash]
   def self.production
     {
         :base                 => 'fanforce.com',

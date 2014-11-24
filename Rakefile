@@ -3,7 +3,13 @@ require 'rake/testtask'
 require 'fileutils'
 include FileUtils
 
-# Default Rake task is compile
+task :run_test do
+  Rake::Task['test'].execute
+  puts '---------------------------------------------------------------------'
+  puts 'TESTS PASSED... READY TO BUILD...'
+  puts '---------------------------------------------------------------------'
+end
+task :build => :run_test
 task :default => :build
 
 ########################################################################
