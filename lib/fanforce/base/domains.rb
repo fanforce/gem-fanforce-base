@@ -88,7 +88,7 @@ module Fanforce::Base::Domains
   # Domain for accessing the Client Panel (i.e., client.fanforce.com) for current environment
   # @return [domain]
   def client_domain
-    'client.' + base_domain
+    'app.' + base_domain
   end
 
   # Domain for accessing the Signup Panel (i.e., signup.fanforce.com) for current environment
