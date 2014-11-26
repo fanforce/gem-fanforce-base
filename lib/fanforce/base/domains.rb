@@ -85,10 +85,10 @@ module Fanforce::Base::Domains
   # The following should be moved to edition config
   ###########
 
-  # Domain for accessing the Client Panel (i.e., client.fanforce.com) for current environment
+  # Domain for accessing the Client Panel (i.e., app.fanforce.com) for current environment
   # @return [domain]
   def client_domain
-    'client.' + base_domain
+    'app.' + base_domain
   end
 
   # Domain for accessing the Signup Panel (i.e., signup.fanforce.com) for current environment
