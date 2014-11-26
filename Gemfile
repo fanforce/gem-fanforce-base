@@ -8,5 +8,4 @@ group :development, :test do
   gem 'yard'
   gem 'redcarpet'
   gem 'github-markup', :require => true
-  require 'redcarpet/compat.rb'
 end

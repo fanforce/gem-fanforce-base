@@ -108,4 +108,19 @@ module Fanforce::Base::Utils
     end
   end
 
+  def to_public_version(version)
+    version.split('.')[0...2].join('.').to_f
+  end
+
+  def version
+    to_public_version(VERSION)
+  end
+
+  def version_dependencies
+    versions = {}
+    versions[:fanforce] = to_public_version(VERSION) if defined?(VERSION)
+    versions[:fanforce] = to_public_version(URANIUM_VERSION) if defined?(URANIUM_VERSION)
+    return versions
+  end
+
 end
