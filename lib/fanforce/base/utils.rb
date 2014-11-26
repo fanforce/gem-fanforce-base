@@ -113,13 +113,13 @@ module Fanforce::Base::Utils
   end
 
   def version
-    to_public_version(VERSION)
+    to_public_version(self::VERSION)
   end
 
   def deployment_dependencies
     versions = {}
-    versions[:fanforce_version] = to_public_version(VERSION) if defined?(VERSION)
-    versions[:uranium_version] = to_public_version(URANIUM_VERSION) if defined?(URANIUM_VERSION)
+    versions[:fanforce_version] = to_public_version(self::VERSION) if const_defined?(:VERSION)
+    versions[:uranium_version] = to_public_version(self::URANIUM_VERSION) if const_defined?(:URANIUM_VERSION)
     return versions
   end
 
