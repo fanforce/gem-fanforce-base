@@ -16,8 +16,8 @@ describe Fanforce::Base::Domains do
     assert Fanforce.controller_domain
     assert Fanforce.uranium_domain
     assert Fanforce.website_domain
-    assert Fanforce.developers_domain
-    assert Fanforce.app_domain
+    assert Fanforce.developer_domain
+    assert Fanforce.client_domain
     assert Fanforce.signup_domain
   end end
 

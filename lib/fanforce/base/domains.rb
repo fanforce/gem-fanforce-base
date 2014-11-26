@@ -75,23 +75,23 @@ module Fanforce::Base::Domains
     'www.' + base_domain
   end
 
-  # Domain for accessing developer's website (i.e., developers.fanforce.com) for current environment
+  # Domain for accessing the Developer Panel (i.e., developer.fanforce.com) for current environment
   # @return [domain]
-  def developers_domain
-    'developers.' + base_domain
+  def developer_domain
+    'developer.' + base_domain
   end
 
   ###########
   # The following should be moved to edition config
   ###########
 
-  # Domain for accessing the CommandCenter Webapp (i.e., app.fanforce.com) for current environment
+  # Domain for accessing the Client Panel (i.e., client.fanforce.com) for current environment
   # @return [domain]
-  def app_domain
-    'app.' + base_domain
+  def client_domain
+    'client.' + base_domain
   end
 
-  # Domain for accessing the CommandCenter Signup (i.e., signup.fanforce.com) for current environment
+  # Domain for accessing the Signup Panel (i.e., signup.fanforce.com) for current environment
   # @return [domain]
   def signup_domain
     'signup.' + base_domain
