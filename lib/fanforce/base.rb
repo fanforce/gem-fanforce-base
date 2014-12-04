@@ -8,4 +8,5 @@ class Fanforce
   end
   include Base::Utils
   include Base::Domains
+  Utils = Base::Utils
 end
