@@ -21,6 +21,7 @@ module Fanforce::Base::Domains
     end
   end
 
+
   # Base domain (i.e., fanforce.com) for current environment
   # @return [domain]
   def base_domain
@@ -48,7 +49,7 @@ module Fanforce::Base::Domains
   # Domain for accessing supercore-api with https (i.e., prd-supercore-api.herokuapp.com) for current environment
   # @return [domain]
   def api_domain_ssl
-    environ == 'development' ? api_domain : "#{environ.to_s}-supercore-api.herokuapp.com"
+    environment == 'development' ? api_domain : "#{environ.to_s}-supercore-api.herokuapp.com"
   end
 
   # Domain for accessing supercore-eye (i.e., i.fanforce.com) for current environment
