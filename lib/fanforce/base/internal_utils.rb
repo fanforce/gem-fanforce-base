@@ -19,15 +19,15 @@ module Fanforce::Base::InternalUtils
 
   def self.to_param(obj, namespace=nil)
     if obj.is_a?(Array)
-      collect { |e| to_param(e) }.join '/'
+      obj.collect { |e| to_param(e) }.join '/'
     elsif obj.is_a?(Hash)
       to_query_string(obj, namespace)
     elsif obj.is_a?(NilClass)
-      obj
+      obj.to_s
     elsif obj.is_a?(TrueClass)
-      obj
+      obj.to_s
     elsif obj.is_a?(FalseClass)
-      obj
+      obj.to_s
     elsif obj.is_a?(Object)
       obj.to_s
     end

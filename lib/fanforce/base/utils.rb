@@ -78,17 +78,29 @@ module Fanforce::Base::Utils
     end
   end
 
-  def to_query_string(obj, namespace=nil)
-    return '' if is_blank?(obj)
-    if obj.is_a?(Array)
-      obj.collect { |value| to_query_string(value, "#{namespace}[]") }.join '&'
-    elsif obj.is_a?(Hash)
-      obj.collect { |key, value| to_query_string(value, namespace ? "#{namespace}[#{key}]" : key) }.sort * '&'
-    elsif obj.is_a?(Object)
-      "#{CGI.escape(Fanforce::Base::InternalUtils.to_param(namespace))}=#{CGI.escape(Fanforce::Base::InternalUtils.to_param(obj).to_s)}"
-    else
-      raise "Argument must be an object, hash, or array; instead it was a #{obj.class}"
+  # Lifted from Rack::Utils.build_nested_query
+  #
+  def build_nested_query(value, prefix = nil)
+    case value
+      when Array
+        value.map { |v|
+          build_nested_query(v, "#{prefix}[]")
+        }.join("&")
+      when Hash
+        value.map { |k, v|
+          build_nested_query(v, prefix ? "#{prefix}[#{escape(k)}]" : escape(k))
+        }.reject(&:empty?).join('&')
+      when nil
+        prefix
+      else
+        raise ArgumentError, "value must be a Hash" if prefix.nil?
+        "#{prefix}=#{escape(value)}"
     end
+  end
+  alias_method :to_query_string, :build_nested_query
+
+  def escape(s)
+    CGI.escape(Fanforce::Base::InternalUtils.to_param(s))
   end
 
   def curl_command(method, url, req_params)
