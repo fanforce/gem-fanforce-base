@@ -8,7 +8,7 @@ describe Fanforce::Base::Domains do
 
     assert Fanforce.base_domain == Fanforce::Base::DomainEnvironments.method(rack_env.to_s).call[:base]
     assert Fanforce.default_short_domain == Fanforce::Base::DomainEnvironments.method(rack_env.to_s).call[:default_short_domain]
-    assert Fanforce.apps_base_domain == Fanforce::Base::DomainEnvironments.method(rack_env.to_s).call[:apps_base]
+    assert Fanforce.plugins_base_domain == Fanforce::Base::DomainEnvironments.method(rack_env.to_s).call[:plugins_base]
 
     assert Fanforce.api_domain
     assert Fanforce.api_domain_ssl
