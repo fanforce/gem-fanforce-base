@@ -34,10 +34,10 @@ module Fanforce::Base::Domains
     Fanforce::Base::DomainEnvironments.method(environment).call[:default_short_domain]
   end
 
-  # Base domain used for apps (i.e., ffapp.com) for current environment
+  # Base domain used for plugins (i.e., ffplugin.com) for current environment
   # @return [domain]
-  def apps_base_domain
-    Fanforce::Base::DomainEnvironments.method(environment).call[:apps_base]
+  def plugins_base_domain
+    Fanforce::Base::DomainEnvironments.method(environment).call[:plugins_base]
   end
 
   # Domain for accessing supercore-api (i.e., api.fanforce.com) for current environment
@@ -46,7 +46,7 @@ module Fanforce::Base::Domains
     'api.' + base_domain
   end
 
-  # Domain for accessing supercore-api with https (i.e., prd-supercore-api.herokuapp.com) for current environment
+  # Domain for accessing supercore-api with https (through heroku) for current environment
   # @return [domain]
   def api_domain_ssl
     environment == 'development' ? api_domain : "#{environ.to_s}-supercore-api.herokuapp.com"
@@ -86,13 +86,13 @@ module Fanforce::Base::Domains
   # The following should be moved to edition config
   ###########
 
-  # Domain for accessing the Client Panel (i.e., app.fanforce.com) for current environment
+  # Domain for accessing the Client Panel for current environment
   # @return [domain]
   def client_domain
     'app.' + base_domain
   end
 
-  # Domain for accessing the Signup Panel (i.e., signup.fanforce.com) for current environment
+  # Domain for accessing the Signup Panel for current environment
   # @return [domain]
   def signup_domain
     'signup.' + base_domain

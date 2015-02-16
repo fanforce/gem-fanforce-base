@@ -54,7 +54,7 @@ module Fanforce::Base::Utils
     uri_hash[:scheme] = uri.scheme || 'http'
     uri_hash[:host]   = clean_uri_var(uri.host)
     uri_hash[:port]   = clean_uri_var(uri.port)
-    uri_hash[:path]   = clean_uri_var(uri.path || '/')
+    uri_hash[:path]   = clean_uri_var(uri.path.present? ? uri.path : '/')
     uri_hash[:query_params] = query_params || {}
     uri_hash[:query_string] = query_string || ''
     uri_hash[:fragment]  = fragment || ''

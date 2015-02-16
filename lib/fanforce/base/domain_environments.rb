@@ -5,9 +5,9 @@ module Fanforce::Base::DomainEnvironments
   def self.development
     root_domain = (ENV['FANFORCE_GEM_TOP_LEVEL_DOMAIN'] || 'dev')
     {
-        :base                 => ENV['FANFORCE_GEM_BASE_DOMAIN'] || "fanforce.#{root_domain}",
+        :base                 => ENV['FANFORCE_GEM_BASE_DOMAIN']          || "fanforce.#{root_domain}",
         :default_short_domain => ENV['FANFORCE_GEM_DEFAULT_SHORT_DOMAIN'] || "fnfrc.#{root_domain}",
-        :apps_base            => ENV['FANFORCE_GEM_APPS_BASE_DOMAIN']     || "ffapp.#{root_domain}",
+        :plugins_base         => ENV['FANFORCE_GEM_PLUGINS_BASE_DOMAIN']  || "ffplugin.#{root_domain}",
     }
   end
 
@@ -17,7 +17,7 @@ module Fanforce::Base::DomainEnvironments
     {
       :base                 => 'fanforce.dev',
       :default_short_domain => 'fnfrc.dev',
-      :apps_base            => 'ffapp.dev',
+      :plugins_base         => 'ffplugin.dev',
     }
   end
 
@@ -27,7 +27,7 @@ module Fanforce::Base::DomainEnvironments
     {
         :base                 => 'fanforce-staging.com',
         :default_short_domain => 'fnfrc.us',
-        :apps_base            => 'ffapp.us',
+        :plugins_base         => 'ffplugin.us',
     }
   end
 
@@ -37,7 +37,7 @@ module Fanforce::Base::DomainEnvironments
     {
         :base                 => 'fanforce.com',
         :default_short_domain => 'fanforce.io',
-        :apps_base            => 'ffapp.io',
+        :plugins_base         => 'ffplugin.io',
     }
   end
 
