@@ -17,6 +17,6 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
-  gem.add_runtime_dependency 'rack'
+  gem.add_runtime_dependency 'rack', '~> 1.5.2'
   gem.add_runtime_dependency 'addressable', '~> 2.3.6'
 end

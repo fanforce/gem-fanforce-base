@@ -116,7 +116,7 @@ module Fanforce::Base::Utils
       when :options
         "curl -X OPTIONS \"#{url}?#{to_query_string(req_params)}\""
       else
-        raise 'Unknown request method'
+        raise "Unknown request method: #{method.to_s.downcase}"
     end
   end
 
