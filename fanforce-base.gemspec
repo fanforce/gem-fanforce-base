@@ -19,4 +19,5 @@ Gem::Specification.new do |gem|
 
   gem.add_runtime_dependency 'rack', '~> 1.5.2'
   gem.add_runtime_dependency 'addressable', '~> 2.3.6'
+  gem.add_runtime_dependency 'multi_json', '>= 1.7.2'
 end

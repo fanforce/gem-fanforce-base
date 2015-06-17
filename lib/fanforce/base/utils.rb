@@ -108,9 +108,9 @@ module Fanforce::Base::Utils
       when :get
         "curl \"#{url}?#{to_query_string(req_params)}\""
       when :post
-        "curl -X POST -d \"#{to_query_string(req_params)}\" #{url}"
+        "curl -X POST -H 'Content-type: application/json' -d '#{MultiJson.dump(req_params).gsub("'", %q(\\\'))}' #{url}"
       when :put
-        "curl -X PUT -d \"#{to_query_string(req_params)}\" #{url.to_json}"
+        "curl -X PUT -H 'Content-type: application/json' -d '#{MultiJson.dump(req_params).gsub("'", %q(\\\'))}' #{url.to_json}"
       when :delete
         "curl --request DELETE \"#{url}?#{to_query_string(req_params)}\""
       when :options
