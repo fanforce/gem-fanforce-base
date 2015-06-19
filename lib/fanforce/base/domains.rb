@@ -40,6 +40,12 @@ module Fanforce::Base::Domains
     Fanforce::Base::DomainEnvironments.method(environment).call[:plugins_base]
   end
 
+  # Base email domain used for plugins (i.e., ffplugin.com) for current environment
+  # @return [domain]
+  def plugins_base_mx_domain
+    Fanforce::Base::DomainEnvironments.method(environment).call[:plugins_base_mx]
+  end
+
   # Domain for accessing supercore-api (i.e., api.fanforce.com) for current environment
   # @return [domain]
   def api_domain
